@@ -1,33 +1,44 @@
 // Job Search Tracker Pro - Service Worker
 const CACHE_NAME = 'job-tracker-pro-v1.0.0';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/app.js',
+  './',
+  './index.html',
+  './style.css',
+  './app.js',
+  './style.min.css',
+  './app.min.js',
   'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js'
 ];
 
 // Install event - cache resources
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      await Promise.all(
+        urlsToCache.map(async (u) => {
+          try { await cache.add(u); } catch (_) { /* some files may not exist in dev */ }
+        })
+      );
+    })()
   );
 });
 
 // Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        // Return cached version or fetch from network
-        return response || fetch(event.request);
+    (async () => {
+      const cached = await caches.match(event.request, { ignoreSearch: true });
+      if (cached) return cached;
+      try {
+        const resp = await fetch(event.request);
+        const cache = await caches.open(CACHE_NAME);
+        cache.put(event.request, resp.clone());
+        return resp;
+      } catch (e) {
+        return cached || Response.error();
       }
-    )
+    })()
   );
 });
 
