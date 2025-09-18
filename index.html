@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Job Search Tracker Pro</title>
+    <meta name="description" content="Enterprise-grade job application tracking PWA" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Inline PWA manifest (embedded) -->
+    <script id="app-manifest" type="application/manifest+json">
+      {
+        "name": "Job Search Tracker Pro",
+        "short_name": "JST Pro",
+        "start_url": "/index.html",
+        "display": "standalone",
+        "background_color": "#0f172a",
+        "theme_color": "#0f172a",
+        "icons": []
+      }
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+    <script>
+      // Install manifest from embedded script for broad host compatibility
+      (function installEmbeddedManifest() {
+        try {
+          const el = document.getElementById('app-manifest');
+          if (!el) return;
+          const blob = new Blob([el.textContent], { type: 'application/manifest+json' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('link');
+          link.rel = 'manifest';
+          link.href = url;
+          document.head.appendChild(link);
+        } catch (_) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Job Search Tracker Pro</h1>
+      <div class="actions">
+        <input id="search" class="search" placeholder="Search company, role, tags" />
+        <button id="btn-import" class="btn">Import CSV</button>
+        <button id="btn-export" class="btn btn-primary">Export CSV</button>
+        <input id="import-file" type="file" accept=".csv" hidden />
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab is-active" data-view="table">Table</button>
+      <button class="tab" data-view="analytics">Analytics</button>
+    </nav>
+
+    <main>
+      <section id="view-table" class="view is-active">
+        <div class="table-wrap">
+          <table id="jobs-table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Vibe</th>
+                <th>Fit</th>
+                <th>Tags</th>
+                <th>Applied</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="view-analytics" class="view">
+        <div class="cards">
+          <div class="card"><div class="kpi" id="kpi-total">0</div><div class="kpi-label">Total</div></div>
+          <div class="card"><div class="kpi" id="kpi-active">0</div><div class="kpi-label">Active</div></div>
+          <div class="card"><div class="kpi" id="kpi-offers">0</div><div class="kpi-label">Offers</div></div>
+          <div class="card"><div class="kpi" id="kpi-rejected">0</div><div class="kpi-label">Rejected</div></div>
+        </div>
+        <canvas id="statusChart" height="120"></canvas>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <small>Offline-capable PWA • Data stored in your browser</small>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+  </html>
+
