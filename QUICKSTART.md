@@ -6,7 +6,7 @@
 
 ```bash
 # Download the complete package
-wget https://github.com/yourusername/job-search-tracker-pro/archive/main.zip
+wget https://github.com/flashesofbrilliance/job-search-tracker-pro/archive/refs/heads/main.zip
 unzip main.zip
 cd job-search-tracker-pro-main
 
@@ -22,7 +22,7 @@ npm run dev
 ### Option 2: Clone from GitHub
 
 ```bash
-git clone https://github.com/yourusername/job-search-tracker-pro.git
+git clone https://github.com/flashesofbrilliance/job-search-tracker-pro.git
 cd job-search-tracker-pro
 npm install
 npm run dev
@@ -86,7 +86,7 @@ npm run dev
 ```bash
 npm run deploy
 ```
-**Result:** Live at `https://yourusername.github.io/job-search-tracker-pro/`
+**Result:** Live at `https://flashesofbrilliance.github.io/job-search-tracker-pro/`
 
 ### 2. Netlify (Free, drag & drop)
 1. Go to [netlify.com](https://netlify.com)

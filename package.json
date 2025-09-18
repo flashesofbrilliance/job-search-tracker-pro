@@ -51,10 +51,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/job-search-tracker-pro.git"
+    "url": "https://github.com/flashesofbrilliance/job-search-tracker-pro.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/job-search-tracker-pro/issues"
+    "url": "https://github.com/flashesofbrilliance/job-search-tracker-pro/issues"
   },
-  "homepage": "https://yourusername.github.io/job-search-tracker-pro/"
+  "homepage": "https://flashesofbrilliance.github.io/job-search-tracker-pro/"
 }

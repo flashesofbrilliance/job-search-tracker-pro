@@ -12,7 +12,7 @@ A comprehensive job application tracking and optimization platform with validate
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/job-search-tracker-pro.git
+git clone https://github.com/flashesofbrilliance/job-search-tracker-pro.git
 cd job-search-tracker-pro
 
 # Install dependencies
