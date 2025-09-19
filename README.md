@@ -78,6 +78,12 @@ job-search-tracker-pro/
 - **Multi-view Interface**: Table, Kanban, Timeline, Analytics
 - **Smart Filtering**: Search, status, vibe, fit score, tags
 - **Goal Tracking**: Weekly targets with visual progress
+
+## 🌐 Deployment
+
+- Deploys to GitHub Pages via GitHub Actions, publishing the `dist/` folder to the `gh-pages` branch.
+- Pages URL: https://flashesofbrilliance.github.io/job-search-tracker-pro/
+- SPA fallback: `dist/404.html` mirrors `index.html` for deep link routing.
 - **Activity Timeline**: Detailed application history per role
 - **Feedback System**: Post-closure surveys for validated learning
 
