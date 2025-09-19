@@ -8,7 +8,7 @@
     "build": "npm run minify-css && npm run minify-js && npm run copy-files",
     "minify-css": "cleancss -o dist/style.min.css style.css",
     "minify-js": "uglifyjs app.js -o dist/app.min.js --compress --mangle",
-    "copy-files": "mkdir -p dist && cp index.html sw.js dist/ && (sed -i.bak -e 's/style\\.css/style.min.css/g' -e 's/app\\.js/app.min.js/g' dist/index.html && rm -f dist/index.html.bak)",
+    "copy-files": "mkdir -p dist && cp index.html sw.js dist/ && (sed -i.bak -e 's/style\\.css/style.min.css/g' -e 's/app\\.js/app.min.js/g' dist/index.html && rm -f dist/index.html.bak) && cp dist/index.html dist/404.html",
     "serve": "http-server . -p 8080 -o",
     "test": "node -e \"console.log('ok')\"",
     "lint": "eslint app.js --fix",
